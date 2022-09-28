@@ -2,11 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Club;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class DashboardController extends Controller
 {
-    public function index(){
+    /**
+     * @param Club $club_model
+     * @return View|Factory|Application
+     */
+    public function index(Club $club_model): View|Factory|Application
+    {
+        $club_list = $club_model->get();
 
+        return view('dashboard.index', [
+                'club_list' => $club_list
+            ]
+        );
     }
 }

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('dni');
-            $table->integer('salary');
+            $table->float('salary');
             $table->unsignedBigInteger('type_id');
             $table->unsignedBigInteger('club_id')->nullable;
             $table->string('photo');
