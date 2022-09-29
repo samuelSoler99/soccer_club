@@ -4,11 +4,6 @@
 
 @section('content')
     <div class=" mx-auto sm:px-6 lg:px-8">
-        <!-- Alert component-->
-        @if(session()->has('message'))
-
-        @endif
-        <!--End  Alert -->
         <div class="mb-5">
             <a href="{{route('club.create')}}" class="mx-5 px-4 py-3 text-white bg-green-500 rounded-md">Add Club</a>
         </div>
@@ -36,7 +31,13 @@
                         <td class="p-3 flex justify-center">
                             <a href="{{route('club.show',$club->id)}}"
                                class="bg-green-500 text-white px-3 py-1 mx-2 rounded-sm">
-                                <i class="fas fa-eye"></i></a>
+                                <i class="fas fa-eye"></i>
+                            </a>
+                            <a href="{{route('club.edit',$club->id)}}"
+                               class="bg-green-500 text-white px-3 py-1 mx-2 rounded-sm">
+                                <i class="fas fa-pen"></i>
+                            </a>
+
                             <form action="{{ route('club.destroy', $club->id)}}" method="POST">
                                 @csrf
                                 @method('post')

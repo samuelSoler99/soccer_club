@@ -19,7 +19,7 @@ class ClubController extends Controller
     {
         $club_list = $club_model->paginate(5);
 
-        return view('dashboard.index', [
+        return view('club.index', [
                 'club_list' => $club_list
             ]
         );
@@ -62,14 +62,33 @@ class ClubController extends Controller
 
     }
 
-    public function show()
+    /**
+     * @param int $id
+     * @param Club $club_model
+     * @return Application|Factory|View
+     */
+    public function show(int $id, Club $club_model)
     {
+        $club = $club_model->findOrFail($id);
+        $club->loadMissing('members');
 
+        return view('club.show', [
+            'club' => $club
+        ]);
     }
 
-    public function edit()
+    /**
+     * @param int $id
+     * @param Club $club_model
+     * @return Application|Factory|View
+     */
+    public function edit(int $id,Club $club_model)
     {
+        $club = $club_model->findOrFail($id);
 
+        return view('club.edit', [
+            'club' => $club
+        ]);
     }
 
     /**
