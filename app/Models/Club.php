@@ -29,16 +29,4 @@ class Club extends Model
     {
         return $this->hasMany(Member::class);
     }
-
-    /**
-     * @param int $id
-     * @return mixed
-     */
-    public function getClubMembersByClubId(int $id): Collection
-    {
-        return $this
-            ->select(['*'])
-            ->where('id', $id)
-            ->get();
-    }
 }
